@@ -1,36 +1,6 @@
-import componentsImg from "./assets/components.png"
-
-const readDescriptions = ["Fundamental", "Crucial", "Core"];
-
-function genRandomDesc(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function Header() {
-
-  const description = readDescriptions[genRandomDesc(2)];
-
-  return (
-    <header>
-      <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
-
-function CoreConcept(props){
-  return (
-    <li>
-      <img src = {props.image} alt = {props.title} />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  );
-}
+import Header from "./components/Header";
+import CoreConcept from "./components/CoreConcept";
+import { CORE_CONCEPTS } from "./data";
 
 function App() {
   return (
@@ -40,14 +10,14 @@ function App() {
         <section id = "core-concepts">
           <h2>Core Concepts</h2>
           <ul>
-            <CoreConcept 
-              title = "Components" 
-              description = "The core UI building block."
-              image = {componentsImg}
+            <CoreConcept //this is a lengthier way of showing data on screen
+              title = {CORE_CONCEPTS[0].title} 
+              description = {CORE_CONCEPTS[0].description}
+              image = {CORE_CONCEPTS[0].image}
             />
-            <CoreConcept/>
-            <CoreConcept/>
-            <CoreConcept/>
+            <CoreConcept {...CORE_CONCEPTS[1]}  /**use spread operator here to pull out contents of CORE_CONCEPTS and display key value pairs*/ />
+            <CoreConcept {...CORE_CONCEPTS[2]}/>
+            <CoreConcept {...CORE_CONCEPTS[3]}/>
           </ul>
         </section>
       </main>
