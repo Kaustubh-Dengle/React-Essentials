@@ -38,7 +38,7 @@ function App() {
               image={CORE_CONCEPTS[0].image}
             /> */}
             {/* <CoreConcept
-              {...CORE_CONCEPTS[1]} use spread operator here to pull out contents of CORE_CONCEPTS and display key value pairs
+              {...CORE_CONCEPTS[1]} easier way, use spread operator here to pull out contents of CORE_CONCEPTS and display key value pairs
             /> */}
             {/* <CoreConcept {...CORE_CONCEPTS[2]} />
             <CoreConcept {...CORE_CONCEPTS[3]} />  */}
