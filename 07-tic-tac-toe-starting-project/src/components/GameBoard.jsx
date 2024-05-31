@@ -1,23 +1,17 @@
 // import { useState } from "react";
 
-const initialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
 
-export default function GameBoard({ onSelectSquare, turns }) {
 
-    //deriving the state from existing state (avoid unnecessary states)
-    let gameBoard = initialGameBoard;
+export default function GameBoard({ onSelectSquare, board }) {
+  //deriving the state from existing state (avoid unnecessary states)
+  // let gameBoard = initialGameBoard;
 
-    for (const turn of turns){
-        const {square, player } = turn;
-        const { row, col } = square;
+  // for (const turn of turns) {
+  //   const { square, player } = turn;
+  //   const { row, col } = square;
 
-        gameBoard[row][col]= player
-    }
-
+  //   gameBoard[row][col] = player;
+  // } moving this logic to app component to lift the state up
 
   //   const [gameBoard, setGameBoard] = useState(initialGameBoard); lifting the state up to app component to avoid conflicting states
 
@@ -31,12 +25,17 @@ export default function GameBoard({ onSelectSquare, turns }) {
   //   }
   return (
     <ol id="game-board">
-      {gameBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => onSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button>
+                <button
+                  onClick={() => onSelectSquare(rowIndex, colIndex)}
+                  disabled={playerSymbol !== null}
+                >
+                  {playerSymbol}
+                </button>
               </li>
             ))}
           </ol>
